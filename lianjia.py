@@ -222,7 +222,7 @@ class Lianjia():
             time_13 = int(round(time.time() * 1000))
             authorization = self.GetMD5(
                 "vfkpbin1ix2rb88gfjebs0f60cbvhedlid={id}order={order}page={page}request_ts={request_ts}".format(
-                    id=id, order=0, page=1, request_ts=time_13))
+                    id=id, order=0, page=page, request_ts=time_13))
             # e = {id: "1111027380242", order: 0, page: 1, filters: "{}", request_ts: 1541871468249} 1b9f64bd353667b4e44ed593eca6451d
             ###############-----拼接请求url-----#################
             url = self.url_fang % (id, page, '%7B%7D', time_13, authorization, time_13)
@@ -367,9 +367,9 @@ def GetCompleteHousingInfo(city):
                 except:
                     pbar.set_description(y['title'] + '已存在')
 
-
 if __name__ == '__main__':
-    city = '郑州'
-    #SaveCityBorderIntoDB(city)  # 下载城市区域数据
+    city = '北京'
+    SaveCityBorderIntoDB(city)  # 下载城市区域数据
     HoleCityDown(city)  # 下载区域住房数据
-    #GetCompleteHousingInfo(city)  # 获取详细在售房屋
+    GetCompleteHousingInfo(city)  # 获取详细在售房屋
+
